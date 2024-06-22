@@ -1,0 +1,7 @@
+{
+  "linkPost": "https://x.com/",
+  "minTime": 5,
+  "maxTime": 10,
+  "numThreads": 3,
+  "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+}

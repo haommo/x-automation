@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    .mt-5,
+    .my-5 {
+      margin-top: 1rem !important;
+    }
+    .line2 {
+      height: 5px;
+    }
+    .header {
+      background-color: #ced4da;
+    }
+    h4 {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 100% !important;
+    }
+    .table-container {
+      max-height: 380px;
+      overflow-y: auto;
+      overflow-x: auto;
+      position: relative;
+      margin-top: 19px;
+      margin-bottom: 19px;
+    }
+    .form-group {
+      margin-bottom: 0px;
+    }
+    .table td,
+    .table th {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .table td:last-child {
+      position: sticky;
+      right: 0;
+      background-color: #f8f9fa;
+      z-index: 3;
+    }
+
+    .table th:last-child {
+      max-width: 400px;
+    }
+
+    .btn {
+      min-width: 75px;
+      height: 100%;
+    }
+    .alert-top {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: auto;
+      max-width: 80%;
+      text-align: center;
+    }
+    .form-control,
+    .form-control-file {
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      padding: 4px 10px;
+    }
+    .custom-col {
+      display: flex;
+      align-items: flex-end;
+    }
+    .custom-btn-col {
+      display: flex;
+      align-items: flex-end;
+      width: 8%;
+      padding-left: 14px;
+      padding-right: 4px;
+    }
+  </style>
+  <title>Trung Automation Tool</title>
+</head>
+<body>
+  <div class="header"><h4>Trung Automation Tool</h4></div>
+  <div class="container mt-5">
+    <div class="row align-items-end">
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="excelFile">Import Profiles:</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="excelFile"
+            accept=".xlsx, .xls"
+          />
+        </div>
+      </div>
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="linkPost">Link Post:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="linkPost"
+            placeholder="Enter link post"
+          />
+        </div>
+      </div>
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="chromePath">Chrome Path:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="chromePath"
+            placeholder="Enter Chrome path"
+          />
+        </div>
+      </div>
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="numThreads">Số luồng:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="numThreads"
+            placeholder="Number of threads"
+          />
+        </div>
+      </div>
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="minTime">Min Time (seconds):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="minTime"
+            placeholder="Min time"
+          />
+        </div>
+      </div>
+      <div class="col-md-3 custom-col">
+        <div class="form-group w-100">
+          <label for="maxTime">Max Time (seconds):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="maxTime"
+            placeholder="Max time"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-2 custom-col">
+        <div class="form-group w-100">
+          <label for="result">Kết quả:</label>
+          <input type="text" class="form-control" id="result" readonly />
+        </div>
+      </div>
+      <div class="custom-btn-col">
+        <button class="btn btn-success w-100" id="saveSettings">Save</button>
+      </div>
+      <div class="custom-btn-col">
+        <button class="btn btn-primary w-100" id="importButton">
+          Import
+        </button>
+      </div>
+      <div class="custom-btn-col">
+        <button class="btn btn-info w-100" id="startButton">Start</button>
+      </div>
+      <div class="custom-btn-col">
+        <button class="btn btn-danger w-100" id="stopButton">Stop</button>
+      </div>
+    </div>
+    <div class="line2"></div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Profile Name</th>
+            <th>Kết quả</th>
+            <th>Proxy</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>2FA</th>
+            <th>API Key</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="profileTable">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="../src/renderer.js"></script>
+</body>
+</html>
